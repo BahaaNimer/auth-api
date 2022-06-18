@@ -1,32 +1,32 @@
 'use strict';
-require('dotenv').config();
+
 const express = require('express');
 
-const notFoundHandler = require('./error/404');
+const notFound = require('./error/404');
 const errorHandler = require('./error/500');
-const logger = require('./middleware/logger');
+const logger = require('./api/middleware/logger');
 
-const userRoutes = require('./routes/crud.route');
-const authRouter = require('./routes/auth.route');
-
+const authRouter = require('./auth/routes');
+const v2Router = require('./api/routes/v2');
+const v1Router = require('./api/routes/v1');
 const app = express();
+
 app.use(express.json());
 
 app.use(logger);
 
-app.use('/api/v1', userRoutes);
-app.use('/api/v2', authRouter);
+app.use('/api/v1', v1Router);
+app.use('/api/v2', v2Router);
+app.use(authRouter);
 
-app.use('*', notFoundHandler);
+app.use('*', notFound);
 app.use(errorHandler);
 
-function start(PORT) {
-  app.listen(PORT, () => {
-    console.log(`Server listening on PORT ${PORT}`);
-  });
-}
-
 module.exports = {
-  app: app,
-  start: start
+  server: app,
+  start: port => {
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
+    });
+  }
 };
