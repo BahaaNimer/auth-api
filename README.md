@@ -8,12 +8,12 @@ A server that contains routes with authentication and authorization middleware
 
 ## Link for PR
 
-[PR]()
+[PR](https://github.com/BahaaNimer/auth-api/pull/1)
 
 ## Link for Heroku
 
-[Heroku]()
+[Heroku](https://bahaa-auth-server.herokuapp.com/)
 
 ## Link for Actions
 
-[Actions]()
+[Actions](https://github.com/BahaaNimer/auth-api/actions)
