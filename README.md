@@ -8,7 +8,7 @@ A server that contains routes with authentication and authorization middleware
 
 ## Link for PR
 
-[PR](https://github.com/BahaaNimer/auth-api/pull/1)
+[PR](https://github.com/BahaaNimer/auth-api/pull/2)
 
 ## Link for Heroku
 
