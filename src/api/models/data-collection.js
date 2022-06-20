@@ -32,12 +32,17 @@ class DataCollection {
     }
   }
 
-  async update(obj) {
-    try {
-      let updated = await record.update(obj);
-      return updated;
-    } catch (e) {
-      console.error("error in updating record in model ", this.model)
+  async update(food_id, obj) {
+    let record = await this.model.findOne({ where: { id: food_id } });
+    if (record) {
+      try {
+        let updated = await this.model.update(obj, { where: { id: food_id } });
+        return updated;
+      } catch (e) {
+        console.error('error in updating record in model ', this.model);
+      }
+    } else {
+      console.error('record not found in model ', this.model);
     }
   }
 
